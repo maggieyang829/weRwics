@@ -22,6 +22,10 @@
   %strong= model_class.human_attribute_name(:description) + ':'
   %br
   = @user.description
+%p
+  %strong= model_class.human_attribute_name(:city) + ':'
+  %br
+  = @user.city
 
 
 = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn btn-default'

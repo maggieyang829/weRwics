@@ -46,11 +46,12 @@ ActiveRecord::Schema.define(version: 20151104175856) do
     t.string   "name"
     t.string   "email"
     t.string   "state"
+    t.string   "city"
     t.string   "profession"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "city"
+    
   end
 
 end
