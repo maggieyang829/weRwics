@@ -1,28 +1,29 @@
 = form_for @user, html: { class: "form form-horizontal user" } do |f|
-  .form-group
-    = f.label :name, class: 'control-label'
-    .controls
-      = f.text_field :name, class: 'form-control', required: true
-    = error_span(@user[:name])
-  .form-group
-    = f.label :email, class: 'control-label'
-    .controls
-      = f.text_field :email, class: 'form-control', required: true
-    = error_span(@user[:email])
-  .form-group
-    = f.label :state, class: 'control-label'
-    .controls
-      = f.text_field :state, class: 'form-control', required: true
-    = error_span(@user[:state])
-  .form-group
-    = f.label :profession, class: 'control-label'
-    .controls
-      = f.text_field :profession, class: 'form-control', required: true
-    = error_span(@user[:profession])
-  .form-group
-    = f.label :description, class: 'control-label'
-    .controls
-      = f.text_field :description, class: 'form-control', required: true
-    = error_span(@user[:description])
+  .container
+    .form-group
+      = f.label :name, class: 'control-label'
+      .controls
+        = f.text_field :name, class: 'form-control', required: true
+      = error_span(@user[:name])
+    .form-group
+      = f.label :email, class: 'control-label'
+      .controls
+        = f.text_field :email, class: 'form-control', required: true
+      = error_span(@user[:email])
+    .form-group
+      = f.label :state, class: 'control-label'
+      .controls
+        = f.text_field :state, class: 'form-control', required: true
+      = error_span(@user[:state])
+    .form-group
+      = f.label :profession, class: 'control-label'
+      .controls
+        = f.text_field :profession, class: 'form-control', required: true
+      = error_span(@user[:profession])
+    .form-group
+      = f.label :description, class: 'control-label'
+      .controls
+        = f.text_field :description, class: 'form-control', required: true
+      = error_span(@user[:description])
   = f.submit nil,class: 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'
