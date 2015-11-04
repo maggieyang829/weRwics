@@ -4,18 +4,24 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  width: 450px;
+
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  width: 450px;
+
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+  width: 450px;
+
 }
 
 a {
@@ -34,7 +40,8 @@ a {
 div {
   &.field, &.actions {
     margin-bottom: 10px;
-    width: 80%;
+    width: 450px;
+
   }
 }
 
