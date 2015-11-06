@@ -1,6 +1,5 @@
 - model_class = User
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
 %table.table.table-striped
   %thead
     %tr
@@ -9,6 +8,7 @@
       %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:state)
+      %th= model_class.human_attribute_name(:city)
       %th= model_class.human_attribute_name(:profession)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:created_at)
@@ -21,6 +21,7 @@
         %td= user.name
         %td= user.email
         %td= user.state
+        %td= user.city
         %td= user.profession
         %td= user.description
         %td=l user.created_at

@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+.app-name {
+   font-size: 1.7em;
+   font-weight: bold;
+   color: #fff;
+}
+
+.bar-item {
+    font-size: 16px;
+}
+

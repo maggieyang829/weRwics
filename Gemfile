@@ -31,6 +31,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # use paperclip for image column in models
 gem "paperclip", "~> 4.3"
 
+# use active_admin for overall admin
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
