@@ -17,7 +17,7 @@
     - @users.each do |user|
       %tr
         %td= link_to user.id, user_path(user)
-        %td= image_tag user.image.url(:thumbnail)
+        %td= image_tag user.image.url(:thumb)
         %td= user.name
         %td= user.email
         %td= user.state
