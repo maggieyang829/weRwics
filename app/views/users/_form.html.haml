@@ -1,4 +1,9 @@
-= form_for @user, html: { class: "form form-horizontal user" } do |f|
+= form_for @user, html: { class: "form form-horizontal user", multipart: true } do |f|
+  .form-group
+    = f.label :image, class: 'control-label'
+    .controls
+      = f.file_field :image, class: 'form-control', required: true
+    = error_span(@user[:image])
   .form-group
     = f.label :name, class: 'control-label'
     .controls
