@@ -3,6 +3,8 @@
 %table.table.table-striped
   %thead
     %tr
+
+      %th= model_class.human_attribute_name(:image)
       %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:profession)
       %th= model_class.human_attribute_name(:description)
@@ -10,6 +12,7 @@
   %tbody
     - @users.each do |user|
       %tr
+        %td= image_tag user.image.url(:thumb)
         %td= user.name
         %td= user.profession
         %td= user.description
@@ -17,3 +20,5 @@
           = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-default btn-xs'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary'
+
+

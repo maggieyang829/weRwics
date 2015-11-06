@@ -46,20 +46,15 @@ ActiveRecord::Schema.define(version: 20151106140518) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "albums", force: :cascade do |t|
-    t.text     "description"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "blogs", force: :cascade do |t|
-    t.string   "title"
     t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "blogs", ["user_id", "created_at"], name: "index_blogs_on_user_id_and_created_at"
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -81,8 +76,12 @@ ActiveRecord::Schema.define(version: 20151106140518) do
     t.string   "state"
     t.string   "profession"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.string   "city"
   end
 

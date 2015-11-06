@@ -1,7 +1,8 @@
 - model_class = User
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.titleize
-
+= image_tag @user.image.url(:medium)
+  
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
@@ -26,6 +27,8 @@
   %strong= model_class.human_attribute_name(:city) + ':'
   %br
   = @user.city
+
+
 
 
 = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn btn-default'
