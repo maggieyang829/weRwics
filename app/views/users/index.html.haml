@@ -1,24 +1,21 @@
 - model_class = User
 
-%table.table.table-striped
-  %thead
-    %tr
-
-      %th= model_class.human_attribute_name(:image)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:profession)
-      %th= model_class.human_attribute_name(:description)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
+.jumbotron
+  .container
+    %h1 We Are Women In CS!
+    %p A website for women in computer science
+    
+.container
+  .row
     - @users.each do |user|
-      %tr
-        %td= image_tag user.image.url(:thumb)
-        %td= user.name
-        %td= user.profession
-        %td= user.description
-        %td
-          = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-default btn-xs'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary'
-
+      .col-md-4
+        .thumbnail
+          = image_tag user.image.url  
+        .caption
+          %h3= user.name
+        %p= user.description
+        = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-primary'
+        %br
+        %br    
+    
 
