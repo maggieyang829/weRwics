@@ -12,11 +12,6 @@
           = f.text_field :name, class: 'form-control', required: true
         = error_span(@user[:name])
       .form-group
-        = f.label :email, class: 'control-label'
-        .controls
-          = f.text_field :email, class: 'form-control', required: true
-        = error_span(@user[:email])
-      .form-group
         = f.label :state, class: 'control-label'
         .controls
           = f.text_field :state, class: 'form-control', required: true

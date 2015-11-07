@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
     has_many :albums
 
     validates :name, presence: true
-    validates :email, presence: true
     validates :state, presence: true
     validates :city, presence: true
     validates :profession, presence: true
