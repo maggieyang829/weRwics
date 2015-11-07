@@ -14,9 +14,9 @@
  *= require_self
  */
 .app-name {
-   font-size: 1.7em;
+   font-size: 1.8em;
    font-weight: bold;
-   color: #fff;
+   color: #BF55EC;
 }
 
 .bar-item {
