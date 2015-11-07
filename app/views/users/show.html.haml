@@ -23,6 +23,11 @@
   %strong= model_class.human_attribute_name(:description) + ':'
   %br
   = @user.description
-
+  
+  
+  
+- if @user.user_auth == current_user_auth
+  = link_to 'Delete record', user_path, :method => :delete
+  = link_to 'Edit record', edit_user_path, :method => :get
 
 

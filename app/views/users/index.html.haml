@@ -10,9 +10,10 @@
     - @users.each do |user|
       .col-md-4
         .thumbnail
-          = image_tag user.image.url  
+          = image_tag user.image.url(:thumb)
         .caption
           %h3= user.name
+        %p= user.user_auth.email
         %p= user.description
         = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-primary'
         %br

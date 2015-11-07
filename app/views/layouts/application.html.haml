@@ -31,6 +31,8 @@
             %li.bar-item= link_to "Help", "/static_pages/help"
             %li.bar-item= link_to "About", "/static_pages/about"
             
+            
+          
           %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
             .form-group
               %Label#username Username
@@ -39,8 +41,9 @@
               %Label#Password Password
               %Input.form-control#Password{type: "password"}
             %Submit.btn.btn-success Login
-            = link_to 'Sign up', new_user_path, :method => :get, :class=>"btn btn-success"
-
+            = link_to 'Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
+            = link_to 'Log out', destroy_user_auth_session_path, :method => :delete, :class=>"btn btn-success"
+ 
     .container
       #main
         - if flash[:notice]

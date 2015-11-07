@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user_auth!, except: [:index, :show]
   # GET /users
   # GET /users.json
 
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = current_user_auth.users.build
   end
 
   # GET /users/1/edit
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = current_user_auth.users.build(user_params)
 
     respond_to do |format|
       if @user.save
