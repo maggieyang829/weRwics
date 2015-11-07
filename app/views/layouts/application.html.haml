@@ -33,11 +33,9 @@
             
           %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
             .form-group
-              %Label#username Username
-              %Input.form-control#username
+              %Input.form-control#username{placeholder: 'username'}
             .form-group
-              %Label#Password Password
-              %Input.form-control#Password{type: "password"}
+              %Input.form-control#Password{type: "password", placeholder:"password"}
             %Submit.btn.btn-success Login
             = link_to 'Sign up', new_user_path, :method => :get, :class=>"btn btn-success"
 
