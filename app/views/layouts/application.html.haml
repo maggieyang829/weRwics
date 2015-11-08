@@ -18,7 +18,7 @@
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
       
   %body
-    .navbar.navbar-inverse.navbar-static-top
+    .navbar.navbar-default.navbar-static-top
       .container
         %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
           %span.icon-bar
@@ -31,16 +31,22 @@
             %li.bar-item= link_to "Help", "/static_pages/help"
             %li.bar-item= link_to "About", "/static_pages/about"
             
-            
-          
-          %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
-            .form-group
-              %Input.form-control#username{placeholder: 'username'}
-            .form-group
-              %Input.form-control#Password{type: "password", placeholder:"password"}
-            %Submit.btn.btn-success Login
-            = link_to 'Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
-            = link_to 'Log out', destroy_user_auth_session_path, :method => :delete, :class=>"btn btn-success"
+          - if user_auth_signed_in?
+            .navbar-right
+              - if current_user_auth.users.length > 0
+                = link_to current_user_auth.email, current_user_auth.users.first, :method => :get
+              - else
+                = link_to "Welcome, #{current_user_auth.email}", new_user_path, :method => :get
+              = link_to 'Log out', destroy_user_auth_session_path, :method => :delete, :class=>"btn btn-success"
+          - else
+            %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
+              .form-group
+                %Input.form-control#username{placeholder: 'username'}
+              .form-group
+                %Input.form-control#Password{type: "password", placeholder:"password"}
+              %Submit.btn.btn-success Login
+              = link_to 'Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
+              
  
     .container
       #main
