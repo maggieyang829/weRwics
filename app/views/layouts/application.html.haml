@@ -34,18 +34,20 @@
           - if user_auth_signed_in?
             .navbar-right
               - if current_user_auth.users.length > 0
+                Welcome!
                 = link_to current_user_auth.email, current_user_auth.users.first, :method => :get
               - else
-                = link_to "Welcome, #{current_user_auth.email}", new_user_path, :method => :get
+                Welcome!
+                = link_to current_user_auth.email, new_user_path, :method => :get
               = link_to 'Log out', destroy_user_auth_session_path, :method => :delete, :class=>"btn btn-success"
           - else
             %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
-              .form-group
-                %Input.form-control#username{placeholder: 'username'}
-              .form-group
-                %Input.form-control#Password{type: "password", placeholder:"password"}
-              %Submit.btn.btn-success Login
-              = link_to 'Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
+              // .form-group
+              //   %Input.form-control#username{placeholder: 'username'}
+              // .form-group
+              //   %Input.form-control#Password{type: "password", placeholder:"password"}
+              // %Submit.btn.btn-success Login
+              = link_to 'Log In/Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
               
  
     .container
