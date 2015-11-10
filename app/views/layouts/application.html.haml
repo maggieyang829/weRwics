@@ -24,7 +24,7 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand.app-name(href="/users") weRwics
+        %a.navbar-brand.app-name(href="/users") weRwics   
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li.active.bar-item= link_to "Home", "/users"
@@ -32,7 +32,8 @@
             %li.bar-item= link_to "About", "/static_pages/about"
             
           - if user_auth_signed_in?
-            .navbar-right
+            %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
+            
               - if current_user_auth.users.length > 0
                 %strong Welcome, 
                 = link_to current_user_auth.email, current_user_auth.users.first, :method => :get
@@ -42,11 +43,6 @@
               = link_to 'Log out', destroy_user_auth_session_path, :method => :delete, :class=>"btn btn-success"
           - else
             %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
-              // .form-group
-              //   %Input.form-control#username{placeholder: 'username'}
-              // .form-group
-              //   %Input.form-control#Password{type: "password", placeholder:"password"}
-              // %Submit.btn.btn-success Login
               = link_to 'Log In/Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
               
  
