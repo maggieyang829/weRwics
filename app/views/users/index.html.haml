@@ -4,7 +4,20 @@
   .container
     %h1 We Are Women In CS!
     %p A website for women in computer science
-    
+
+.container
+  .row
+    .col-md-1
+      %h5.pull-right Filter by 
+    .col-md-2
+      %select.form-control
+        %option all
+        %option 2
+    .col-md-2
+      %select.form-control
+        %option all
+        %option pp
+      
 .container
   .row
     - @users.each do |user|
@@ -15,7 +28,7 @@
         .caption
           %h3= user.name
         %p= user.description
-        = link_to 'View details', user_path(user), :class => 'btn btn-primary'
+        = button_to 'View details', user_path(user), :class => 'btn btn-primary', :method => "get"
         %br
         %br    
     
