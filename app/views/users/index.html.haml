@@ -10,7 +10,7 @@
     - @users.each do |user|
       .col-md-2
         .thumbnail
-          = image_tag user.image.url()
+          = image_tag user.image.url(:medium)
       .col-md-4
         .caption
           %h3= user.name
