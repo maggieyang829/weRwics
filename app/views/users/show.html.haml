@@ -1,28 +1,27 @@
 - model_class = User
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
-= image_tag @user.image.url(:medium)
-  
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
+.container
   %br
-  = @user.name
-%p
-  %strong= model_class.human_attribute_name(:state) + ':'
   %br
-  = @user.state
-%p
-  %strong= model_class.human_attribute_name(:city) + ':'
-  %br
-  = @user.city
-%p
-  %strong= model_class.human_attribute_name(:profession) + ':'
-  %br
-  = @user.profession
-%p
-  %strong= model_class.human_attribute_name(:description) + ':'
-  %br
-  = @user.description
+  .row
+    .col-md-4
+      = image_tag @user.image.url(:medium)
+    .col-md-8
+      %p
+        %strong= model_class.human_attribute_name(:name) + ':'
+        = @user.name
+      %p
+        %strong= 'Location' + ':'
+        = @user.city.to_s + ', ' + @user.state.to_s
+      %p
+        %strong= model_class.human_attribute_name(:profession) + ':'
+        = @user.profession
+  .row
+    .col-md-12
+      %p
+        %strong= model_class.human_attribute_name(:description) + ':'
+        %br
+        = @user.description
+        
   
   
   
