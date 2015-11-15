@@ -27,9 +27,9 @@
         %a.navbar-brand.app-name(href="/users") weRwics   
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li.active.bar-item= link_to "Home", "/users"
-            %li.bar-item= link_to "Help", "/static_pages/help"
-            %li.bar-item= link_to "About", "/static_pages/about"
+            %li.bar-item{:class => active_class("/users")}= link_to "Home", "/users"
+            %li.bar-item{:class => active_class("/static_pages/help")}= link_to "Help", "/static_pages/help"
+            %li.bar-item{:class => active_class("/static_pages/about")}= link_to "About", "/static_pages/about"
             
           - if user_auth_signed_in?
             %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
@@ -59,3 +59,8 @@
       .container
         %p.text-muted @ SELT class project fall 2015
 
+// :javascript
+//   $(document).on('click', '.navbar-nav li', function() {
+//       $(".navbar-nav li").removeClass("active");
+//       $(this).addClass("active");
+//   });
