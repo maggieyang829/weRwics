@@ -12,11 +12,11 @@
     .col-md-2
       %h5.pull-right Filter by 
     .col-md-2
-      =select(:user, :filter, User.pluck('DISTINCT state') {|p| [ p ] },
+      =select(:state, :filter, User.pluck('DISTINCT state') {|p| [ p ] },
                   {:include_blank => "--State--"},
                   { :onchange => 'filterOn(this)', :class => 'form-control'})
     .col-md-2
-      =select(:user, :filter, User.pluck('DISTINCT profession') {|p| [ p ] },
+      =select(:profession, :filter, User.pluck('DISTINCT profession') {|p| [ p ] },
                   {:include_blank => "--Profession--"},
                   { :onchange => 'filterOn(this)', :class => 'form-control'})
 %hr
@@ -36,9 +36,22 @@
           %br    
     
 :javascript
-  function filterOn(obj) {
-    //alert(obj[obj.selectedIndex].value);
-    $(".UserDiv").show();
+  function filterOnState(obj) {
     var selected = obj[obj.selectedIndex].value;
-    $('.' + selected).hide();
+    if (selected == "") {
+      $(".UserDiv").show();
+    } else {
+      $(".UserDiv").hide();
+      $('.' + selected).show();
+    }
+  }
+  
+  function filterOnProfession(obj) {
+    var selected = obj[obj.selectedIndex].value;
+    if (selected == "") {
+      $(".UserDiv").show();
+    } else {
+      $(".UserDiv").hide();
+      $('.' + selected).show();
+    }
   }
