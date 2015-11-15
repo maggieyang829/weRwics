@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    user_params["profession"] = user_params["profession"].downcase
     @user = current_user_auth.users.build(user_params)
 
     respond_to do |format|
@@ -45,6 +46,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    user_params["profession"] = user_params["profession"].downcase
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
