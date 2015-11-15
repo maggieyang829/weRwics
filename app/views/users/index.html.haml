@@ -14,11 +14,11 @@
     .col-md-2
       =select(:state, :filter, User.pluck('DISTINCT state') {|p| [ p ] },
                   {:include_blank => "--State--"},
-                  { :onchange => 'filterOn(this)', :class => 'form-control'})
+                  { :onchange => 'filterOn()', :class => 'form-control'})
     .col-md-2
       =select(:profession, :filter, User.pluck('DISTINCT profession') {|p| [ p ] },
                   {:include_blank => "--Profession--"},
-                  { :onchange => 'filterOn(this)', :class => 'form-control'})
+                  { :onchange => 'filterOn()', :class => 'form-control'})
 %hr
 .container
   .row
@@ -36,22 +36,21 @@
           %br    
     
 :javascript
-  function filterOnState(obj) {
-    var selected = obj[obj.selectedIndex].value;
-    if (selected == "") {
+  function filterOn() {
+    var state_obj = $("#state_filter");
+    var prof_obj = $("#profession_filter");
+    var selected_state = state_obj.val();
+    var selected_prof = prof_obj.val();
+    if ((selected_state == "") && (selected_prof == "")) {
       $(".UserDiv").show();
+    } else if (selected_state == "") {
+      $(".UserDiv").hide();
+      $('.' + selected_prof).show();
+    } else if (selected_prof == "") {
+      $(".UserDiv").hide();
+      $('.' + selected_state).show();
     } else {
       $(".UserDiv").hide();
-      $('.' + selected).show();
-    }
-  }
-  
-  function filterOnProfession(obj) {
-    var selected = obj[obj.selectedIndex].value;
-    if (selected == "") {
-      $(".UserDiv").show();
-    } else {
-      $(".UserDiv").hide();
-      $('.' + selected).show();
+      $('.' + selected_state + '.' + selected_prof).show();
     }
   }
