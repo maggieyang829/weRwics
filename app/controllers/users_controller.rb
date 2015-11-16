@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    user_params["profession"] = user_params["profession"].downcase
+    p user_params
     @user = current_user_auth.users.build(user_params)
 
     respond_to do |format|
