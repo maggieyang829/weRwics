@@ -19,7 +19,11 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = current_user_auth.users.build
+    if current_user_auth.users.length > 0
+      render :status => :forbidden, :text => "Forbidden fruit"
+    else
+      @user = current_user_auth.users.build
+    end
   end
 
   # GET /users/1/edit

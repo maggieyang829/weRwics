@@ -14,7 +14,7 @@
       .form-group
         = f.label :state, class: 'control-label'
         .controls
-          = f.select :state, options_for_select([["Alabama","AL"], ["Alaska","AK"], ["Arizona", "AZ"]]), {:prompt=>"-- UNITED STATES --"}, {:class=> 'form-control', :required=> true}
+          = f.select :state, options_for_select([["Alabama","AL"], ["Alaska","AK"], ["Arizona", "AZ"], ["Arkansas","AR"]]), {:prompt=>"-- UNITED STATES --"}, {:class=> 'form-control', :required=> true}
         = error_span(@user[:state])
       .form-group
         = f.label :city, class: 'control-label'
