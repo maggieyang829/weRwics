@@ -1,0 +1,19 @@
+.page-header
+  %h1= 'Blog Posts'
+    
+%table{ :class => "table table-striped"}
+  %thead
+    %tr
+      %th= 'Title'
+      %th= 'Date Posted'
+      
+  %tbody
+    - @blogs.each do |blog|
+      %tr
+        %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
+        %td= blog.created_at
+        
+%br
+%br
+
+#Verify user and add link to create new blog
