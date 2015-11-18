@@ -27,11 +27,11 @@
   %h2 More Information About Me
   %ul.nav.nav-tabs
     %li.active
-      %a{"data-toggle" => "tab", :href => user_blogs_path(@user)} Blogs
+      %a{"data-toggle" => "tab", :href => "#blogs"} Blogs
     %li
       %a{"data-toggle" => "tab", :href => "#albums"} Albums
   .tab-content
-    user_blogs_path(@user).tab-pane.fade.in.active  
+    #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
       %p These are my blog posts.
     #albums.tab-pane.fade
