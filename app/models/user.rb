@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
     has_many :blogs, dependent: :destroy
-    has_many :albums
+    has_many :photos, dependent: :destroy
+    
     belongs_to :user_auth
     validates :name, presence: true
     validates :state, presence: true

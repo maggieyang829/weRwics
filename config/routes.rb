@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         resources :replies
       end
     end
-    resources :albums
+   resources :photos
   end
   # resources :blogs
   # resources :albums

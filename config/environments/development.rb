@@ -39,6 +39,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
+  # Include all the helper files
+  config.action_controller.include_all_helpers = true
   
+  # for paperclip installation
   Paperclip.options[:command_path] = "/usr/bin"
 end
