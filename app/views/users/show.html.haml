@@ -23,8 +23,9 @@
         = @user.description
         
   
-.container
-  %h2 More Information About Me
+//.container
+.tabbable{:style => "margin-bottom: 18px;"}>
+  //%h2 More Information About Me
   %ul.nav.nav-tabs
     %li.active
       %a{"data-toggle" => "tab", :href => "#blogs"} Blogs
@@ -34,13 +35,14 @@
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
       %p These are my blog posts.
-      $('#blogs').load('/blogs/index.html.haml');
+      
     #albums.tab-pane.fade
       %h3 Albums
       %p These are my photos.
   %br
   %br
-  
+$('#blogs').load('/blogs/index.html.haml');
+
 - if @user.user_auth == current_user_auth
   = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
   = link_to 'Delete record', user_path, :method => :delete, :class => "btn btn-danger"
