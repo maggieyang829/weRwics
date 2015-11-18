@@ -23,7 +23,6 @@
         = @user.description
         
   
-//= link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
 .container
   %h2 More Information About Me
   %ul.nav.nav-tabs
@@ -44,6 +43,7 @@
 - if @user.user_auth == current_user_auth
   = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
   = link_to 'Delete record', user_path, :method => :delete, :class => "btn btn-danger"
+  = link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
 
 
 
