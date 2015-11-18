@@ -31,7 +31,7 @@
     %li
       %a{"data-toggle" => "tab", :href => "#albums"} Albums
   .tab-content
-    #blogs.tab-pane.fade.in.active  
+    user_blogs_path(@user).tab-pane.fade.in.active  
       %h3 BLOG POSTS
       %p These are my blog posts.
     #albums.tab-pane.fade
