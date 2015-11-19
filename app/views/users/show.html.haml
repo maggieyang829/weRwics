@@ -38,7 +38,7 @@
       %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
       :javascript
         $(document).ready(function(){
-          $("button").click(function(){
+          $("#blogs").click(function(){
             $('#blogs').load('/blogs/index.html.haml');
           });
         });
