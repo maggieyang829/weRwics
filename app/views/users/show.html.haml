@@ -35,24 +35,14 @@
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
       %p These are my blog posts.
-      %table{ :class => "table table-striped"}
-        %thead
-          %tr
-            %th= 'Title'
-            %th= 'Date Posted'
       
-        %tbody
-          - @blogs.each do |blog|
-            %tr
-              %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
-              %td= blog.created_at
-              
-    %br
-    %br
-
     #albums.tab-pane.fade
       %h3 Albums
       %p These are my photos.
+      - @user.blogs.each do |blog|
+        %tr
+          %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
+          %td= blog.created_at
   %br
   %br
 //$('#blogs').load('/blogs/index.html.haml');
