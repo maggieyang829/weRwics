@@ -34,11 +34,7 @@
   .tab-content
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
-      %p These are my blog posts.
-      
-    #albums.tab-pane.fade
-      %h3 Albums
-      %p These are my photos:
+      %p These are my blog posts:
       %table{ :class => "table table-striped"}
         %thead
           %tr
@@ -53,7 +49,11 @@
               
       %br
       %br
-      
+    #albums.tab-pane.fade
+      %h3 Albums
+      %p These are my photos:
+      %br
+      %br
   
 - if @user.user_auth == current_user_auth
   = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
