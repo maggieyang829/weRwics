@@ -35,7 +35,13 @@
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
       %p These are my blog posts.
-      
+      %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
+      :javascript
+        $(document).ready(function(){
+          $("button").click(function(){
+            $('#blogs').load('/blogs/index.html.haml');
+          });
+        });
     #albums.tab-pane.fade
       %h3 Albums
       %p These are my photos.
