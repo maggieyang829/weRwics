@@ -41,7 +41,7 @@
       %p These are my photos.
   %br
   %br
-$('#blogs').load('/blogs/index.html.haml');
+//$('#blogs').load('/blogs/index.html.haml');
 
 - if @user.user_auth == current_user_auth
   = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
