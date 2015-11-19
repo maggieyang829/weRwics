@@ -26,7 +26,7 @@
 //.container
 .tabbable{:style => "margin-bottom: 18px;"}>
   //%h2 More Information About Me
-  %ul.nav.nav-tabs
+  %ul#myTab.nav.nav-tabs
     %li.active
       %a{"data-toggle" => "tab", :href => "#blogs"} Blogs
     %li
@@ -38,7 +38,7 @@
       %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
       :javascript
         $(document).ready(function(){
-          $("#blogs").click(function(){
+          $("#myTab a[href="#blogs"]").click(function(){
             $('#blogs').load('/blogs/index.html.haml');
           });
         });
