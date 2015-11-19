@@ -1,0 +1,19 @@
+%h1 New Blog Post
+
+= form_tag user_blogs_path do
+  .control-group
+    = label :blog, :title, 'Title', :class => 'control-label'
+    .controls
+      = text_field :blog, :title, :class => 'form-control'
+    
+  %br
+  .control-group
+    = label :blog, :content, 'Content', :class => 'control-label'
+    .controls
+      = text_area :blog, :content, :rows => 12, :class => 'form-control'
+     
+  %br
+
+    = submit_tag 'Save'
+
+    = link_to 'Cancel', user_blog_path(@blog.user_id, @blog.id)

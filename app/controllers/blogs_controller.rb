@@ -1,16 +1,28 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  #before_filter :authenticate_user_auth!, except: [:index, :show]
 
   # GET /blogs
   def index
-    user_id = User.find(params[:user_id])
-    @blogs = user_id.blogs
+    @user_id = params[:user_id]
+    user_link_clicked = User.find(@user_id)
+    @blogs = user_link_clicked.blogs
   end
 
   # GET /blogs/1
   def show
   end
 
+  def new
+    # default: render 'new' template
+  end
+  
+  def create
+    @blog = Blog.create!(blog_params)
+    flash[:notice] = "#{@blog.title} was successfully created."
+    redirect_to user_blogs_path(params[:user_id])
+  end
+  
   # GET /blogs/1/edit
   def edit
   end
@@ -20,14 +32,14 @@ class BlogsController < ApplicationController
   def update
     @blog.update_attributes!(blog_params)
     flash[:notice] = 'Blog post was successfully updated.'
-    redirect_to user_blog_path(@blog.user_id,@blog.id)
+    redirect_to user_blog_path(@user_id,@blog.id)
   end
 
   # DELETE /blogs/1
   def destroy
     @blog.destroy
     flash[:notice] = "'#{@blog.title}' was successfully deleted."
-    redirect_to user_blogs_path(@blog.user_id)
+    redirect_to user_blogs_path(@user_id)
   end
 
   private
