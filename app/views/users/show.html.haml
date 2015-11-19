@@ -23,7 +23,7 @@
         = @user.description
         
   
-//.container
+.container
 .tabbable{:style => "margin-bottom: 18px;"}>
   //%h2 More Information About Me
   %ul#myTab.nav.nav-tabs
@@ -34,7 +34,7 @@
   .tab-content
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
-      %p These are my blog posts:
+      %p These are my blog posts. Click on the Titles for the blog content!
       %table{ :class => "table table-striped"}
         %thead
           %tr
@@ -58,7 +58,7 @@
 - if @user.user_auth == current_user_auth
   = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
   //= link_to 'Delete record', user_path, :method => :delete, :class => "btn btn-danger"
-  = link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
+  //= link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
 
 
 
