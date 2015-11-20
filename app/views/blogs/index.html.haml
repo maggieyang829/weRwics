@@ -15,8 +15,6 @@
         
 %br
 %br
-
-
-  = link_to 'New Blog', new_user_blog_path(@user_id), :class => 'btn btn-primary'
-
-
+  
+  - if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
+    = link_to 'New Blog', new_user_blog_path(@user_id), :class => 'btn btn-primary'

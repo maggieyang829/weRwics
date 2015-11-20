@@ -1,6 +1,6 @@
 %h1 Edit Existing Post
 
-= form_tag user_blog_path(@blog.user_id, @blog.id), :method => :put do
+= form_tag user_blog_path(@user_id, @blog.id), :method => :put do
   .control-group
     = label :blog, :title, 'Title', :class => 'control-label'
     .controls
@@ -16,4 +16,4 @@
 
     = submit_tag 'Update'
 
-    = link_to 'Cancel', user_blog_path(@blog.user_id, @blog.id), :class => 'btn btn-default btn-link'
+    = link_to 'Cancel', user_blog_path(@user_id, @blog.id), :class => 'btn btn-default btn-link'

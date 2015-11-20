@@ -1,10 +1,11 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  #before_filter :authenticate_user_auth!, except: [:index, :show]
+  #before_action :set_user_id, only: [:index, :edit, :create, :update, :destroy]
+  before_action :set_user_id
+  before_filter :authenticate_user_auth!, except: [:index, :show]
 
   # GET /blogs
   def index
-    @user_id = params[:user_id]
     user_link_clicked = User.find(@user_id)
     @blogs = user_link_clicked.blogs
   end
@@ -18,9 +19,11 @@ class BlogsController < ApplicationController
   end
   
   def create
-    @blog = Blog.create!(blog_params)
+    blog_user = User.find(@user_id)
+    @blog = blog_user.blogs.build(blog_params)
+    @blog.save!
     flash[:notice] = "#{@blog.title} was successfully created."
-    redirect_to user_blogs_path(params[:user_id])
+    redirect_to user_blogs_path(@user_id)
   end
   
   # GET /blogs/1/edit
@@ -47,6 +50,9 @@ class BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
     end
 
+    def set_user_id
+      @user_id= params[:user_id]
+    end
 
     def blog_params
       params.require(:blog).permit(:title,:content,:user_id)
