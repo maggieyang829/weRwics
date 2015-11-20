@@ -10,11 +10,13 @@
         = @user.name
       %h1
         = @user.city.to_s + ', ' + @user.state.to_s
-      %p
-        = @user.profession.to_s
+      %h1
+        %strong= model_class.human_attribute_name(:profession) + ':'
+        = @user.profession
   .row
     .col-md-12
       %p
+        %strong= model_class.human_attribute_name(:description) + ':'
         %br
         = @user.description
         
