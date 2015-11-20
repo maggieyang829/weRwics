@@ -7,6 +7,7 @@
 %br
 %br
 
-= link_to 'Back', user_blogs_path(@blog.user_id, @blog.id), :class => 'btn btn-default'
-= link_to 'Edit', edit_user_blog_path(@blog.user_id, @blog.id),  :class => 'btn btn-default'
-= link_to 'Delete', user_blog_path(@blog.user_id, @blog.id), :class => 'btn btn-default', :method => :delete, :data => { :confirm => 'Blog post will be permanently deleted'}
+= link_to 'Back', user_blogs_path(@user_id), :class => 'btn btn-default'
+- if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
+    = link_to 'Edit', edit_user_blog_path(@user_id, @blog.id),  :class => 'btn btn-default'
+    = link_to 'Delete', user_blog_path(@user_id, @blog.id), :class => 'btn btn-default', :method => :delete, :data => { :confirm => 'Blog post will be permanently deleted'}
