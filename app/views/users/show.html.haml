@@ -6,19 +6,15 @@
     .col-md-4
       = image_tag @user.image.url(:medium)
     .col-md-8
-      %p
-        %strong= model_class.human_attribute_name(:name) + ':'
+      %h1
         = @user.name
-      %p
-        %strong= 'Location' + ':'
+      %h1
         = @user.city.to_s + ', ' + @user.state.to_s
-      %p
-        %strong= model_class.human_attribute_name(:profession) + ':'
+      %h1
         = @user.profession
   .row
     .col-md-12
       %p
-        %strong= model_class.human_attribute_name(:description) + ':'
         %br
         = @user.description
         
