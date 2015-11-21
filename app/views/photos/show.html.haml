@@ -1,5 +1,9 @@
-= image_tag @photo.file.url(:medium) 
-= @photo.title 
+%h3
+  = @photo.title
+%p
+  = image_tag @photo.file.url(:medium)
+  
+%p
 - if @user.user_auth == current_user_auth
-    = link_to 'Edit', edit_user_photo_path(@user, @photo)
+  = link_to 'Edit', edit_user_photo_path(@user, @photo), :class => 'btn btn-default'
 

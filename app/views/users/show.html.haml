@@ -35,9 +35,8 @@
   .tab-content
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
-      %p These are my blog posts. Click on the Titles for the blog content!
-      - if current_user_auth == @user.user_auth && @user.blogs.length == 0
-        =link_to 'Create New Blog', new_user_blog_path(@user), :class => 'btn btn-success'
+      - if @user.blogs.length == 0
+        %p this user has no blog yet
       - else
         %table{ :class => "table table-striped"}
           %thead
@@ -52,22 +51,23 @@
                 %td= blog.created_at
               
       %br
-      %br
       
-        - if !current_user_auth.nil? and current_user_auth == @user.user_auth
-          = link_to 'New Blog', new_user_blog_path(@user.id), :class => 'btn btn-primary'
+      - if !current_user_auth.nil? and current_user_auth == @user.user_auth
+        = link_to 'Create New Blog', new_user_blog_path(@user), :class => 'btn btn-success'
           
     #albums.tab-pane.fade
-      %h3 Albums
-      %p These are my photos.
-      - @user.photos.each do |photo|
-        = link_to [@user, photo] do
-          = image_tag photo.file.url(:thumb)
+      %h3 Photos
+      - if @user.photos.length == 0
+        %p this user has no photos yet
+      -else
+        - @user.photos.each do |photo|
+          = link_to [@user, photo] do
+            = image_tag photo.file.url(:thumb)
+      %br
       %p
       - if @user.user_auth == current_user_auth
-        = link_to 'Upload new photo', new_user_photo_path(@user), :method => :get, :class => "btn btn-default"
-  %br
-  %br
+        = link_to 'Upload new photo', new_user_photo_path(@user), :method => :get, :class => "btn btn-success"
+
   
 
 

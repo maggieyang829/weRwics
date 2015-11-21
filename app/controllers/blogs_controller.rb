@@ -23,7 +23,7 @@ class BlogsController < ApplicationController
     @blog = blog_user.blogs.build(blog_params)
     @blog.save!
     flash[:notice] = "#{@blog.title} was successfully created."
-    redirect_to user_blogs_path(@user_id)
+    redirect_to user_path(@user_id)
   end
   
   # GET /blogs/1/edit
