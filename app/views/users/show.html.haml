@@ -6,27 +6,25 @@
     .col-md-4
       = image_tag @user.image.url(:medium)
     .col-md-8
-      %p
-        %strong= model_class.human_attribute_name(:name) + ':'
+      %h1
         = @user.name
-      %p
-        %strong= 'Location' + ':'
+      %h1
         = @user.city.to_s + ', ' + @user.state.to_s
-      %p
-        %strong= model_class.human_attribute_name(:profession) + ':'
+      %h1
         = @user.profession
   .row
     .col-md-12
       %p
-        %strong= model_class.human_attribute_name(:description) + ':'
+        %br
         %br
         = @user.description
         
-  
-//= link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
+%br
+%br
 .container
-  %h2 More Information About Me
-  %ul.nav.nav-tabs
+.tabbable{:style => "margin-bottom: 18px;"}>
+  //%h2 More Information About Me
+  %ul#myTab.nav.nav-tabs
     %li.active
       %a{"data-toggle" => "tab", :href => "#blogs"} Blogs
     %li
@@ -34,7 +32,21 @@
   .tab-content
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
-      %p These are my blog posts.
+      %p These are my blog posts. Click on the Titles for the blog content!
+      %table{ :class => "table table-striped"}
+        %thead
+          %tr
+            %th= 'Title'
+            %th= 'Date Posted'
+            
+        %tbody
+          - @user.blogs.each do |blog|
+            %tr
+              %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
+              %td= blog.created_at
+              
+      %br
+      %br
     #albums.tab-pane.fade
       %h3 Albums
       %p These are my photos.
@@ -51,7 +63,8 @@
   
 - if @user.user_auth == current_user_auth
   = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
-  = link_to 'Delete record', user_path, :method => :delete, :class => "btn btn-danger"
+  //= link_to 'Delete record', user_path, :method => :delete, :class => "btn btn-danger"
+  //= link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
 
 
 
