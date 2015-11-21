@@ -59,11 +59,11 @@ module UsersHelper
     
     def profession_list
         [
-            ["Student", "S"],
-            ["Industry", "I"],
-            ["Acdemic", "A"],
-            ["Self-employed", "E"],
-            ["Others", "O"]
+            ["Student", "Student"],
+            ["Industry", "Industry"],
+            ["Acdemic", "Acdemic"],
+            ["Self-employed", "Self-employed"],
+            ["Others", "Others"]
         ]
     end
 end

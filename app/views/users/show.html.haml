@@ -3,15 +3,18 @@
   %br
   %br
   .row
-    .col-md-4
+    .col-md-3
       = image_tag @user.image.url(:medium)
-    .col-md-8
-      %h1
+    .col-md-6.pull-left
+      %h2
         = @user.name
-      %h1
+      %p
         = @user.city.to_s + ', ' + @user.state.to_s
-      %h1
+      %p
         = @user.profession
+    .col-md-3
+      - if @user.user_auth == current_user_auth
+        = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-info btn-block"
   .row
     .col-md-12
       %p
@@ -33,17 +36,20 @@
     #blogs.tab-pane.fade.in.active  
       %h3 BLOG POSTS
       %p These are my blog posts. Click on the Titles for the blog content!
-      %table{ :class => "table table-striped"}
-        %thead
-          %tr
-            %th= 'Title'
-            %th= 'Date Posted'
-            
-        %tbody
-          - @user.blogs.each do |blog|
+      - if current_user_auth == @user.user_auth && @user.blogs.length == 0
+        =link_to 'Create New Blog', new_user_blog_path(@user), :class => 'btn btn-success'
+      - else
+        %table{ :class => "table table-striped"}
+          %thead
             %tr
-              %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
-              %td= blog.created_at
+              %th= 'Title'
+              %th= 'Date Posted'
+              
+          %tbody
+            - @user.blogs.each do |blog|
+              %tr
+                %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
+                %td= blog.created_at
               
       %br
       %br
@@ -53,10 +59,6 @@
       %br
       %br
   
-- if @user.user_auth == current_user_auth
-  = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-default"
-  //= link_to 'Delete record', user_path, :method => :delete, :class => "btn btn-danger"
-  //= link_to 'Blog Posts', user_blogs_path(@user), :class => 'btn btn-primary'
 
 
 

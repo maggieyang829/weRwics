@@ -1,7 +1,7 @@
 
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_user_auth!, except: [:index, :show]
   # GET /users
   # GET /users.json
@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    p user_params
     @user = current_user_auth.users.build(user_params)
 
     respond_to do |format|
