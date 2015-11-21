@@ -10,7 +10,7 @@ Given(/^I am on the weRwics home page$/) do
   select profession, :from => 'profession'
   fill_in 'description', :with => description
   click_button 'Create User'
- end
+end
 
  Then(/^I should see a user with name "(.*?)"$/) do |name| 
   visit users_path

@@ -53,11 +53,21 @@
               
       %br
       %br
+      
+        - if !current_user_auth.nil? and current_user_auth == @user.user_auth
+          = link_to 'New Blog', new_user_blog_path(@user.id), :class => 'btn btn-primary'
+          
     #albums.tab-pane.fade
       %h3 Albums
-      %p These are my photos:
-      %br
-      %br
+      %p These are my photos.
+      - @user.photos.each do |photo|
+        = link_to [@user, photo] do
+          = image_tag photo.file.url(:thumb)
+      %p
+      - if @user.user_auth == current_user_auth
+        = link_to 'Upload new photo', new_user_photo_path(@user), :method => :get, :class => "btn btn-default"
+  %br
+  %br
   
 
 
