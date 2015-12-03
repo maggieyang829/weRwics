@@ -1,0 +1,10 @@
+.container
+    = form_tag new_blog_comment_path do
+    
+      .control-group
+        = label :comment, :content, 'Leave a Comment', :class => 'control-label'
+        .controls
+          = text_area :comment, :content, :rows => 12, :class => 'form-control'
+         
+      %br
+      = submit_tag 'Submit', :class => 'btn btn-success'

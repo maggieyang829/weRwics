@@ -1,6 +1,5 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  #before_action :set_user_id, only: [:index, :edit, :create, :update, :destroy]
   before_action :set_user_id
   before_filter :authenticate_user_auth!, except: [:index, :show]
 

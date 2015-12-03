@@ -4,7 +4,7 @@
       .form-group
         = f.label :image, class: 'control-label'
         .controls
-          = f.file_field :image, class: 'form-control', required: true
+          = f.file_field :image, class: 'form-control', required: false
         = error_span(@user[:image])
       .form-group
         = f.label :name, class: 'control-label'

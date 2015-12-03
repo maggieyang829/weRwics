@@ -48,7 +48,7 @@
             - @user.blogs.each do |blog|
               %tr
                 %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
-                %td= blog.created_at
+                %td= blog.created_at.strftime("%m/%d/%Y %H:%M:%S")
               
       %br
       

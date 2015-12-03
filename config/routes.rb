@@ -13,12 +13,16 @@ Rails.application.routes.draw do
   get 'static_pages/help'
 
   resources :users do
-    resources :blogs do
-      resources :comments do
-        resources :replies
-      end
-    end
-   resources :photos
+    resources :blogs
+    resources :photos
+  end
+  
+  resources :blogs do
+    resources :comments
+  end
+  
+  resources :comments do
+    resources :replies
   end
   # resources :blogs
   # resources :albums

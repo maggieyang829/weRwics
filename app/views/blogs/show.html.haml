@@ -1,4 +1,8 @@
 .page-header
+    .pull-right
+        - if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
+            = link_to 'Edit', edit_user_blog_path(@user_id, @blog.id),  :class => 'btn btn-default'
+            = link_to 'Delete', user_blog_path(@user_id, @blog.id), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Blog post will be permanently deleted'}
     %h1= @blog.title
     
 .container
@@ -7,7 +11,34 @@
 %br
 %br
 
-= link_to 'Back', user_path(@user_id), :class => 'btn btn-default'
-- if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
-    = link_to 'Edit', edit_user_blog_path(@user_id, @blog.id),  :class => 'btn btn-default'
-    = link_to 'Delete', user_blog_path(@user_id, @blog.id), :class => 'btn btn-default', :method => :delete, :data => { :confirm => 'Blog post will be permanently deleted'}
+.container
+    %h4 Comments
+    - if @blog.comments.length == 0
+        %p Be the first one to leave a comment!
+    - else
+        - @blog.comments.each do |comment|
+            .panel.panel-default
+                .panel-heading
+                    %strong=User.find(comment.user_id).name
+                    said: 
+                    .pull-right
+                        %strong=comment.created_at.strftime("%m/%d/%Y %H:%M:%S")
+                .panel-body
+                    - if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
+                        .row
+                            .pull-right{:style => "margin-right: 10px"}
+                                =link_to 'Reply', new_comment_reply_path(comment.id), :class => 'btn-link'
+                    .row
+                        =comment.content
+        
+.container
+  
+    = form_tag new_blog_comment_path(@blog.id) do
+    
+        .control-group
+            = label :comment, :content, 'Leave a Comment', :class => 'control-label'
+        .controls
+            = text_area :comment, :content, :rows => 5, :class => 'form-control'
+     
+        %br
+        = submit_tag 'Submit', :class => 'btn btn-success'

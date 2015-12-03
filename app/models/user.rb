@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-    has_attached_file :image, styles: { medium: "300x300>", thumb: "50x50>" }
+    has_attached_file :image, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: "/images/:style/missing.png"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
     has_many :blogs, dependent: :destroy
     has_many :photos, dependent: :destroy
+    has_many :comments, dependent: :destroy
     
     belongs_to :user_auth
     validates :name, presence: true

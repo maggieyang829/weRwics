@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user_auth!, except: [:index, :show]
   # GET /users
   # GET /users.json
-
   
   def index
     @users = User.all 

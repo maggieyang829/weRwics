@@ -6,8 +6,6 @@ class PhotosController < ApplicationController
     @photo = @user.photos.new
   end
     
-    
-    
   def show
     @photo = @user.photos.find params[:id]
   end
@@ -23,7 +21,6 @@ class PhotosController < ApplicationController
     end
   end
   
-  
   def edit
     @photo = @user.photos.find params[:id]
   end
@@ -36,7 +33,9 @@ class PhotosController < ApplicationController
     else
       render :edit
     end
-  end  
+  end
+  
+  
   
   private
     # Use callbacks to share common setup or constraints between actions.
