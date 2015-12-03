@@ -49,9 +49,9 @@
     .container
       #main
         - if flash[:notice]
-          #notice.message= flash[:notice]
+          #notice.alert.alert-success.message= flash[:notice]
         - elsif flash[:warning]
-          #warning.message= flash[:warning]
+          #warning.alert.alert-danger.message= flash[:warning]
 
         = yield
 

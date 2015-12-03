@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_blog_id
-  before_filter :authenticate_user_auth!, except: [:index, :show]
+  before_action :set_blog_id, :set_user_id
+  before_filter :authenticate_user_auth!, except: [:create, :index, :show]
 
   def index
     blog = Blog.find(@blog_id)
@@ -16,10 +16,17 @@ class CommentsController < ApplicationController
   end
   
   def create
-    blog = Blog.find(@blog_id)
-    @comment = blog.comments.build(comment_params)
-    @comment.save!
-    flash[:notice] = "Comment was successfully created."
+    if !current_user_auth
+      flash[:warning] = 'Please log in first to leave a comment'
+    else
+      blog = Blog.find(@blog_id)
+      user = User.find(@user_id)
+      @comment = Comment.new(comment_params)
+      blog.comments << @comment
+      user.comments << @comment
+      @comment.save!
+      flash[:notice] = "Comment was successfully created."
+    end
     redirect_to user_blog_path(@user_id, @blog_id)
   end
   
@@ -30,7 +37,7 @@ class CommentsController < ApplicationController
   def update
     @comment.update_attributes!(comment_params)
     flash[:notice] = 'Comment was successfully updated.'
-    redirect_to user_blog_path(@user_id,@blog.id)
+    redirect_to user_blog_path(@user_id,@blog_id)
   end
 
   def destroy
@@ -46,7 +53,11 @@ class CommentsController < ApplicationController
     end
     
     def set_user_id
-        @user_id = params[:user_id]
+      if !current_user_auth
+        @user_id = -1
+      else
+        @user_id = current_user_auth.users.first.id
+      end
     end
     
     def set_blog_id
@@ -54,6 +65,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:blog).permit(:title,:content,:blog_id)
+      params.require(:comment).permit(:content,:blog_id, :user_id)
     end
 end

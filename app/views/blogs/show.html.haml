@@ -28,12 +28,11 @@
                         .row
                             .pull-right{:style => "margin-right: 10px"}
                                 =link_to 'Reply', new_comment_reply_path(comment.id), :class => 'btn-link'
-                    .row
-                        =comment.content
+                    =comment.content
         
 .container
   
-    = form_tag new_blog_comment_path(@blog.id) do
+    = form_tag blog_comments_path(@blog.id) do
     
         .control-group
             = label :comment, :content, 'Leave a Comment', :class => 'control-label'
