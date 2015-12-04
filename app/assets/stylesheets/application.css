@@ -32,7 +32,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-color: #cc99ff !important;
+  background: url("http://www.freevectorpic.com/wp-content/uploads/2015/03/vector-beautiful-light-blue-background.jpg");
+  background-size: cover;
 }
 
 .footer {
