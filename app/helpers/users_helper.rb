@@ -61,7 +61,7 @@ module UsersHelper
         [
             ["Student", "Student"],
             ["Industry", "Industry"],
-            ["Acdemic", "Acdemic"],
+            ["Acedemic", "Acedemic"],
             ["Self-employed", "Self-employed"],
             ["Others", "Others"]
         ]

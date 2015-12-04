@@ -29,7 +29,8 @@
                             .pull-right{:style => "margin-right: 10px"}
                                 =link_to 'Reply', new_comment_reply_path(comment.id), :class => 'btn-link'
                     =comment.content
-        
+%br
+%br
 .container
   
     = form_tag blog_comments_path(@blog.id) do
