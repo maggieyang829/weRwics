@@ -52,6 +52,19 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
-
+.jumbotron {
+    position: relative;
+    background:
+      linear-gradient(
+        rgba(255, 0, 0, 0.45), 
+        rgba(255, 0, 0, 0.45)
+      ),
+      url("http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/galaxy-wallpapers-10.jpg")
+      center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+}
 
 
