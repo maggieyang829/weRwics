@@ -1,12 +1,13 @@
-.page-header
-    .pull-right
-        - if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
-            = link_to 'Edit', edit_user_blog_path(@user_id, @blog.id),  :class => 'btn btn-default'
-            = link_to 'Delete', user_blog_path(@user_id, @blog.id), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Blog post will be permanently deleted'}
-    %h1= @blog.title
-    
-.container
-    %p= @blog.content
+.container.profile
+    .page-header
+        .pull-right
+            - if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
+                = link_to 'Edit', edit_user_blog_path(@user_id, @blog.id),  :class => 'btn btn-default'
+                = link_to 'Delete', user_blog_path(@user_id, @blog.id), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Blog post will be permanently deleted'}
+        %h1= @blog.title
+        
+    .container
+        %p= @blog.content
 
 %br
 %br

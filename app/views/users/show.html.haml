@@ -1,5 +1,5 @@
 - model_class = User
-.container
+.container.profile
   %br
   %br
   .row
@@ -21,52 +21,52 @@
         %br
         %br
         = @user.description
-        
-%br
-%br
-.container
-.tabbable{:style => "margin-bottom: 18px;"}>
-  //%h2 More Information About Me
-  %ul#myTab.nav.nav-tabs
-    %li.active
-      %a{"data-toggle" => "tab", :href => "#blogs"} Blogs
-    %li
-      %a{"data-toggle" => "tab", :href => "#albums"} Albums
-  .tab-content
-    #blogs.tab-pane.fade.in.active  
-      %h3 BLOG POSTS
-      - if @user.blogs.length == 0
-        %p this user has no blog yet
-      - else
-        %table{ :class => "table table-striped"}
-          %thead
-            %tr
-              %th= 'Title'
-              %th= 'Date Posted'
-              
-          %tbody
-            - @user.blogs.each do |blog|
+  %br
+  %br    
+
+.container.profile
+  .tabbable{:style => "margin-bottom: 18px;"}>
+    //%h2 More Information About Me
+    %ul#myTab.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#blogs"} Blogs
+      %li
+        %a{"data-toggle" => "tab", :href => "#albums"} Albums
+    .tab-content
+      #blogs.tab-pane.fade.in.active  
+        %h3 BLOG POSTS
+        - if @user.blogs.length == 0
+          %p this user has no blog yet
+        - else
+          %table{ :class => "table table-striped"}
+            %thead
               %tr
-                %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
-                %td= blog.created_at.strftime("%m/%d/%Y %H:%M:%S")
-              
-      %br
-      
-      - if !current_user_auth.nil? and current_user_auth == @user.user_auth
-        = link_to 'Create New Blog', new_user_blog_path(@user), :class => 'btn btn-success'
-          
-    #albums.tab-pane.fade
-      %h3 Photos
-      - if @user.photos.length == 0
-        %p this user has no photos yet
-      -else
-        - @user.photos.each do |photo|
-          = link_to [@user, photo] do
-            = image_tag photo.file.url(:thumb)
-      %br
-      %p
-      - if @user.user_auth == current_user_auth
-        = link_to 'Upload new photo', new_user_photo_path(@user), :method => :get, :class => "btn btn-success"
+                %th= 'Title'
+                %th= 'Date Posted'
+                
+            %tbody
+              - @user.blogs.each do |blog|
+                %tr
+                  %td= link_to blog.title, user_blog_path(blog.user_id, blog.id)
+                  %td= blog.created_at.strftime("%m/%d/%Y %H:%M:%S")
+                
+        %br
+        
+        - if !current_user_auth.nil? and current_user_auth == @user.user_auth
+          = link_to 'Create New Blog', new_user_blog_path(@user), :class => 'btn btn-success'
+            
+      #albums.tab-pane.fade
+        %h3 Photos
+        - if @user.photos.length == 0
+          %p this user has no photos yet
+        -else
+          - @user.photos.each do |photo|
+            = link_to [@user, photo] do
+              = image_tag photo.file.url(:thumb)
+        %br
+        %p
+        - if @user.user_auth == current_user_auth
+          = link_to 'Upload new photo', new_user_photo_path(@user), :method => :get, :class => "btn btn-success"
 
   
 
