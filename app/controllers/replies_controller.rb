@@ -4,8 +4,8 @@ class RepliesController < ApplicationController
   before_filter :authenticate_user_auth!, except: [:index, :show]
 
   def index
-    blog = Blog.find(@blog_id)
-    @comments = blog.comments
+    comment = Comment.find(@comment_id)
+    @replies_to_comment = comment.replies
   end
 
   def show
@@ -29,16 +29,10 @@ class RepliesController < ApplicationController
       
   end
 
-  def update
-    @comment.update_attributes!(comment_params)
-    flash[:notice] = 'Comment was successfully updated.'
-    redirect_to user_blog_path(@user_id,@blog_id)
-  end
-
   def destroy
-    @comment.destroy
-    flash[:notice] = "Comment was successfully deleted."
-    redirect_to user_blog_path(@user_id, @blog_id)
+    @reply.destroy
+    flash[:notice] = "Reply was successfully deleted."
+    redirect_to user_blog_path(@user_id, comment.blog_id)
   end
   
   private

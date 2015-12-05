@@ -33,13 +33,11 @@
                         %hr
                         #replysec{:style =>"padding-left:2em"}
                             - comment.replies.each do |reply|
-                                %strong #{User.find(reply.user_id).name} 
-                                replied on:     
-                                =reply.created_at.strftime("%m/%d/%Y %H:%M:%S")
-                                %br
+                                %p
+                                %strong= "#{User.find(reply.user_id).name} replied on : #{reply.created_at.strftime("%m/%d/%Y %H:%M:%S")}"
+                                %p
                                 =reply.content
-                                %br
-                                %br
+
                                 
                             
                     
