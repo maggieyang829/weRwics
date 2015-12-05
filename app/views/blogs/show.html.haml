@@ -29,6 +29,20 @@
                             .pull-right{:style => "margin-right: 10px"}
                                 =link_to 'Reply', new_comment_reply_path(comment.id), :class => 'btn-link'
                     =comment.content
+                    - if comment.replies.length > 0
+                        %hr
+                        #replysec{:style =>"padding-left:2em"}
+                            - comment.replies.each do |reply|
+                                %strong #{User.find(reply.user_id).name} 
+                                replied on:     
+                                =reply.created_at.strftime("%m/%d/%Y %H:%M:%S")
+                                %br
+                                =reply.content
+                                %br
+                                %br
+                                
+                            
+                    
         
 .container
   
