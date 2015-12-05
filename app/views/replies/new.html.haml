@@ -1,0 +1,9 @@
+.container
+    = form_tag comment_replies_path do
+        .control-group
+            = label :reply, :content, 'Leave a Reply', :class => 'control-label'
+            .controls
+                = text_area :reply, :content, :rows => 5, :class => 'form-control'
+         
+        %br
+        = submit_tag 'Submit', :class => 'btn btn-success'
