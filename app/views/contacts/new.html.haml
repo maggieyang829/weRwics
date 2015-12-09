@@ -1,0 +1,22 @@
+.row
+  .large-8.small-centered.columns
+    %div{align: "center"}
+      %h2 Send A email to her
+      = form_for [@user,@contact],  :html => {:class => 'form-horizontal' } do |f|
+        .row
+          .large-12.columns
+            %h2 Name
+            = f.text_field :name, :required => true, :placeholder => 'Your name'
+        .row
+          .large-12.columns
+            %h2 Email
+            = f.text_field :email, :required => true, :placeholder => 'Your email address'
+        .row
+          .large-12.columns
+            %h2 Message
+            = f.text_area :message, :as => :text, :required => true, :size => "30x10" 
+        .hidden
+          = f.text_field :nickname, :hint => 'Leave this field blank!'
+          = f.text_field :recip, :value => @user.user_auth.email
+        %div
+          = f.submit 'Send message'

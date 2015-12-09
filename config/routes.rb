@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :blogs
     resources :photos
+    #match '/contacts', to: 'contacts#new', via: 'get'
+    resources :contacts, only: [:new, :create]
+    
   end
   
   resources :blogs do
@@ -28,4 +31,7 @@ Rails.application.routes.draw do
   # resources :albums
   # resources :comments
   # resources :replies
+  
+  
+  
 end

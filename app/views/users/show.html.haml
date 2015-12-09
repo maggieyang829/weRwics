@@ -15,6 +15,10 @@
     .col-md-3
       - if @user.user_auth == current_user_auth
         = link_to 'Edit record', edit_user_path, :method => :get, :class => "btn btn-info btn-block"
+      - else
+        = link_to 'Contact her',  new_user_contact_path(@user), :method => :get, :class => "btn btn-info btn-block"
+        %br
+        = link_to 'Follow her',  new_user_contact_path(@user), :method => :get, :class => "btn btn-info btn-block"
   .row
     .col-md-12
       %p
@@ -69,6 +73,4 @@
           = link_to 'Upload new photo', new_user_photo_path(@user), :method => :get, :class => "btn btn-success"
 
   
-
-
 
