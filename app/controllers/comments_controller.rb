@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
   def create
     if !current_user_auth
       flash[:warning] = 'Please log in first to leave a comment'
+      redirect_to new_user_auth_session_path
     else
       blog = Blog.find(@blog_id)
       user = User.find(@user_id)
@@ -26,8 +27,9 @@ class CommentsController < ApplicationController
       user.comments << @comment
       @comment.save!
       flash[:notice] = "Comment was successfully created."
+      redirect_to user_blog_path(@user_id, @blog_id)
     end
-    redirect_to user_blog_path(@user_id, @blog_id)
+    
   end
   
   def edit

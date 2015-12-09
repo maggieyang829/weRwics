@@ -25,7 +25,7 @@
                     .pull-right
                         %strong=comment.created_at.strftime("%m/%d/%Y %H:%M:%S")
                 .panel-body
-                    - if !current_user_auth.nil? and current_user_auth == User.find(@user_id).user_auth
+                    - if !current_user_auth.nil? and current_user_auth == @blog.user.user_auth
                         .row
                             .pull-right{:style => "margin-right: 10px"}
                                 =link_to 'Reply', new_comment_reply_path(comment.id), :class => 'btn-link'

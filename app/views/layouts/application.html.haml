@@ -43,7 +43,7 @@
               = link_to 'Log out', destroy_user_auth_session_path, :method => :delete, :class=>"btn btn-success"
           - else
             %form{:class =>"navbar-form navbar-right form-inline", :role => "form"}
-              = link_to 'Log In/Sign up', new_user_auth_registration_path, :method => :get, :class=>"btn btn-success"
+              = link_to 'Log In/Sign up', new_user_auth_session_path, :method => :get, :class=>"btn btn-success"
               
  
     .container
