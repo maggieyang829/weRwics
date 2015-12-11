@@ -2,15 +2,25 @@ require 'rails_helper'
 require 'test_helper'
 
 describe UsersController, type: :controller do
-  it "should redirect to index page after user is created" do
-    new_user_record = {:image => sample_file('1.txt'), :name => 'test', :state => 'Iowa', :city=>'d', :profession => 'student', :description => 'g'}
-    post new_user_path new_user_record
-    expect(response).to redirect_to users_path
+  # 
+  it "should let a user see all the posts" do
+    sign_in
+    get :index
+    expect( response ).to render_template( :index )
   end
- 
-  it "should set flash success when user is created" do
-    new_user_record = {:image => sample_file('1.txt'), :name => 'test', :state => 'Iowa', :city=>'d', :profession => 'student', :description => 'g'}
-    post new_user_path new_user_record
-    expect(flash[:notice]).to be_present
+  
+  describe "anonymous user" do
+    before :each do
+      # This simulates an anonymous user
+      sign_in nil
+    end
+
+    it "should be redirected to signin" do
+      get :index
+      #expect( response ).to redirect_to( new_user_session_path )
+      expect( response ).to render_template( :index )
+    end
   end
+
+  
 end

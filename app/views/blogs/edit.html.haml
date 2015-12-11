@@ -5,13 +5,11 @@
     = label :blog, :title, 'Title', :class => 'control-label'
     .controls
       = text_field :blog, :title, :class => 'form-control'
-    = error_span(@blog[:title]) 
   %br
   .control-group
     = label :blog, :content, 'Content', :class => 'control-label'
     .controls
       = text_area :blog, :content, :rows => 12, :class => 'form-control'
-    = error_span(@blog[:content]) 
   %br
 
     = submit_tag 'Update'
