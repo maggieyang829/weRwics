@@ -71,5 +71,6 @@ end
 
 group :production do
   gem 'pg'
+  gem 'foreman'
   gem 'rails_12factor'
 end

@@ -62,12 +62,10 @@ ActiveRecord::Schema.define(version: 20151203202404) do
     t.integer  "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id_id"
     t.integer  "user_id"
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
-  add_index "comments", ["user_id_id"], name: "index_comments_on_user_id_id"
 
   create_table "photos", force: :cascade do |t|
     t.string   "title"
