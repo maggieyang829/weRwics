@@ -24,16 +24,15 @@
   .col-md-12
     - @users.each do |user|
       .col-md-6{:class => "#{user.state} #{user.profession} UserDiv"}
-        .col-md-4
+        .col-sm-4
           .thumbnail
             = image_tag user.image.url(:medium)
-        .col-md-8
+        .col-sm-8
           .caption
             %h3= user.name
           %p= user.description
           = button_to 'View details', user_path(user), :class => 'btn btn-primary', :method => "get"
-          %br
-          %br
+          
 %br
 %br
     
